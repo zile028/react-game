@@ -39,11 +39,15 @@ function Poker() {
     <div className="poker">
       <h1>poker</h1>
       <div className="poker-wrapper">
-        <button onClick={drawCard}>Draw</button>
-        <div className="card">
-          <img src={backCard} alt="" />
+        <div className="poker-deck">
+          <div className="card">
+            <img src={backCard} alt="" />
+            <button onClick={drawCard}>Draw - {deck.length}</button>
+          </div>
         </div>
-        {drawnCards.length && <DrawnCards drawnCards={drawnCards} />}
+        <div className="poker-drawn-cards">
+          {drawnCards.length && <DrawnCards drawnCards={drawnCards} />}
+        </div>
       </div>
     </div>
   );
