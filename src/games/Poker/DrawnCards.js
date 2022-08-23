@@ -12,19 +12,6 @@ function DrawnCards({ drawnCards }) {
     setTimeout(() => {}, 2000);
   }, [dealCard]);
 
-  const renderSlow = () => {
-    let index = 0;
-    let interval = setInterval(() => {
-      setDealCard((prevState) => {
-        return [...prevState, <Card card={drawnCards[index]} key={index} />];
-      });
-      index++;
-      if (dealCard.length === 5) {
-        clearInterval(interval);
-      }
-    }, 1000);
-  };
-
   return (
     <div className="cards">
       {/* {renderCards} */}

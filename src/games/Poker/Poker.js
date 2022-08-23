@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./poker.scss";
-import { cards } from "../../assets/img/cards/cards";
+import { cards, backCard } from "../../assets/img/cards/cards";
 import Card from "./Card";
+
 import DrawnCards from "./DrawnCards";
 
 function Poker() {
@@ -26,7 +27,6 @@ function Poker() {
   const drawCard = () => {
     let copyDeck = [...deck];
     let selectedCards = copyDeck.splice(0, 5);
-
     setDrawnCards(
       selectedCards.map((el) => {
         return { ...el, isHold: false };
@@ -40,7 +40,9 @@ function Poker() {
       <h1>poker</h1>
       <div className="poker-wrapper">
         <button onClick={drawCard}>Draw</button>
-
+        <div className="card">
+          <img src={backCard} alt="" />
+        </div>
         {drawnCards.length && <DrawnCards drawnCards={drawnCards} />}
       </div>
     </div>
