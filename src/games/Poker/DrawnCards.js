@@ -4,11 +4,13 @@ import Card from "./Card";
 function DrawnCards({ drawnCards }) {
   const [dealCard, setDealCard] = useState([]);
 
-  const renderCards = drawnCards.map((el, index) => {
-    return <Card card={el} key={index} />;
-  });
+  const renderCards = () => {
+    return drawnCards.map((el, index) => {
+      return <Card card={el} key={index} />;
+    });
+  };
 
-  return <div className="cards">{renderCards}</div>;
+  return <div className="cards">{renderCards()}</div>;
 }
 
 export default DrawnCards;

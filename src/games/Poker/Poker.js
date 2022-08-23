@@ -1,17 +1,27 @@
-import React, { useEffect, useState } from "react";
-import "./poker.scss";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 import { cards, backCard } from "../../assets/img/cards/cards";
-import Card from "./Card";
-
 import DrawnCards from "./DrawnCards";
+import "./poker.scss";
+import PokerContext from "../../store/context";
+import reducer from "../../store/reducer";
 
 function Poker() {
+  const { state } = useContext(PokerContext);
   const [deck, setDeck] = useState([]);
   const [drawnCards, setDrawnCards] = useState([]);
 
+  const [decks, dispatch] = useReducer(reducer, []);
+
   useEffect(() => {
-    setDeck(shufleCards(cards));
+    let shufle = shufleCards(cards);
+    dispatch({ type: "set_deck", payload: shufle });
+    console.log(state);
+    setDeck(shufle);
   }, []);
+
+  useEffect(() => {
+    console.log(decks);
+  }, [decks]);
 
   const shufleCards = (arr) => {
     let copyArr = [...arr];
